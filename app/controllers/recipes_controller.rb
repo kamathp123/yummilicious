@@ -1,7 +1,17 @@
 class RecipesController < ApplicationController
 	before_action :find_recipe, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, except: [:index, :show]
+	before_action :recipe_owner, only: [:edit, :update, :destroy]
 
+	
+	def recipe_owner
+     unless @recipe.user_id == current_user.id
+      flash[:notice] = 'Access denied!!!'
+      redirect_to root_path
+     end
+  	end
+	
+	
 	def index
 		@recipe = Recipe.all.order("created_at DESC")
 	end

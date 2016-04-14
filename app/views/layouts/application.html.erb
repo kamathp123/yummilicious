@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Recipe App</title>
+  <title>Yummilicious</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  
   <nav class="navbar navbar-default">
     <div class="container">
       <div class="navbar-brand">
-        <%= link_to "Recipe Box", root_path %>
+        <%= link_to "Yummilicious", root_path %>
       </div>
+      
       <% if user_signed_in? %>
         <ul class="nav navbar-nav navbar-right">
           <li>
