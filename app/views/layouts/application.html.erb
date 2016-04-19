@@ -10,8 +10,10 @@
   
   <nav class="navbar navbar-default">
     <div class="container">
-      <div class="navbar-brand">
+      
+      <div class="navbar-brand" >
         <%= link_to "Yummilicious", root_path %>
+        
       </div>
       
       <% if user_signed_in? %>
@@ -22,6 +24,7 @@
           <li>
             <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
           </li>
+          
         </ul>
       <% else %>
         <ul class="nav navbar-nav navbar-right">

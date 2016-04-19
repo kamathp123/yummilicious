@@ -46,10 +46,10 @@
   </div>
   <div class="row">
     <div class="col-md-12">
-      <%= link_to "Back", root_path, class: "btn btn-default" %>
+      <%= link_to "Back", root_path, class: "btn btn-primary" %>
       <% if current_user == @recipe.user %>
-        <%= link_to "Edit", edit_recipe_path, class: "btn btn-default" %>
-        <%= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-default" %>
+        <%= link_to "Edit", edit_recipe_path, class: "btn btn-warning" %>
+        <%= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-danger" %>
       <% end %>
     </div>
   </div>
