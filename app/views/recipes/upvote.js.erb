@@ -1,0 +1,6 @@
+$('.like').bind('ajax:success', function() {
+
+   $('.up-<%= @recipe.id %>').text(<%= @recipe.get_upvotes.size%>);
+   $('.down-<%= @recipe.id %>').text(<%= @recipe.get_downvotes.size%>);
+
+});

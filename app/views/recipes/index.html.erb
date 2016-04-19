@@ -1,5 +1,5 @@
 <% @recipe.each_slice(3) do |recipes| %>
-  <div class="row">
+  <div class="row" id="recipe">
     <% recipes.each do |recipe| %>
       <div class="col-md-4">
         <div class="recipe">
@@ -11,6 +11,19 @@
           <h2>
             <%= link_to recipe.title, recipe %>
           </h2>
+          
+          <% if user_signed_in? %>
+           <button type="button" class="btn btn-secondary">
+      
+           <%= link_to like_recipe_path(recipe),  method: :put, remote: true, class: 'like' do %>
+             <span class="glyphicon glyphicon-thumbs-up"></span>
+             <span class="up-<%= recipe.id %>"><%= recipe.get_upvotes.size %></span>
+          <% end %>
+            
+          </button>  
+          <% end %>
+          
+          
         </div>
       </div>
     <% end %>

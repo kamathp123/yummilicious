@@ -51,6 +51,21 @@
         <%= link_to "Edit", edit_recipe_path, class: "btn btn-warning" %>
         <%= link_to "Delete", recipe_path, method: :delete, data: {confirm: "Are you sure?" }, class: "btn btn-danger" %>
       <% end %>
+      
+      <% if user_signed_in? %>
+      <button type="button" class="btn btn-secondary">
+      
+       <%= link_to like_recipe_path(@recipe),  method: :put, remote: true, class: 'like' do %>
+         <span class="glyphicon glyphicon-thumbs-up"></span>
+         <span class="up-<%= @recipe.id %>"><%= @recipe.get_upvotes.size %></span>
+      <% end %>
+        
+      </button>  
+      <% end %>
+      
+     
+      
+      
     </div>
   </div>
 </div>

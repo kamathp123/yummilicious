@@ -2,6 +2,8 @@ class RecipesController < ApplicationController
 	before_action :find_recipe, only: [:show, :edit, :update, :destroy]
 	before_action :authenticate_user!, except: [:index, :show]
 	before_action :recipe_owner, only: [:edit, :update, :destroy]
+	
+	respond_to :html, :js 
 
 	
 	def recipe_owner
@@ -12,11 +14,28 @@ class RecipesController < ApplicationController
   	end
 	
 	
+  def upvote
+    @recipe = Recipe.find(params[:id])
+    @recipe.upvote_by current_user
+    respond_to do |format|
+      format.html {redirect_to :back }
+      format.json { render json: { count: @recipe.liked_count } }
+      format.js   { render :layout => false }
+    end
+  end
+
+ 
+	
+	
+	
+	
+	
 	def index
 		@recipe = Recipe.all.order("created_at DESC")
 	end
 
 	def show
+		
 	end
 
 	def new
@@ -28,6 +47,7 @@ class RecipesController < ApplicationController
 
 		if @recipe.save
 			redirect_to @recipe, notice: "Successfully created new recipe"
+			
 		else
 			render 'new'
 		end
@@ -45,8 +65,8 @@ class RecipesController < ApplicationController
 	end
 
 	def destroy
-		@recipe.destroy
-		redirect_to root_path, notice: "Successfully deleted recipe"
+		@recipe.destroy!
+		redirect_to @recipe, notice: "Successfully Deleted"
 	end
 
 	private
