@@ -46,7 +46,7 @@ class RecipesController < ApplicationController
 		@recipe = current_user.recipes.build(recipe_params)
 
 		if @recipe.save
-			redirect_to @recipe, notice: "Successfully created new recipe"
+			redirect_to root_path, notice: "Successfully created new recipe"
 			
 			
 		else
