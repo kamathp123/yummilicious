@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.0' 
 
 gem 'rails', '4.1.5'
 gem 'acts_as_votable', '~> 0.10.0'
