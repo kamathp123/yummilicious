@@ -48,6 +48,7 @@ class RecipesController < ApplicationController
 		if @recipe.save
 			redirect_to @recipe, notice: "Successfully created new recipe"
 			
+			
 		else
 			render 'new'
 		end
